@@ -1,0 +1,13 @@
+//chen jia
+import java.util.SortedMap;//order auto,
+import java.util.TreeMap;
+
+public class WordTree {
+	SortedMap<Word,Word> J  = new TreeMap<>();//1st values for key,2d for values in treemap
+	public SortedMap<Word,Word>getmap(){
+		return J;
+	}
+public void put(Word b) {
+	J.put(b, null);
+}
+}
