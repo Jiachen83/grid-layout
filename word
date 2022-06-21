@@ -1,0 +1,54 @@
+//chen jia
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Word implements Comparable<Word>{
+	private String Word;
+	
+	public Word(String W) throws IllegalWordException {
+		if(isV(W)) {
+            if(W.contains(".")) {
+                Word = W.replace(".", "");
+            }
+            else if(W.contains(",")) {
+                Word = W.replace(",", "");
+            }
+            else {
+                Word = W;
+            }
+		}        
+		else {
+		throw new IllegalWordException("Invald Words: " + "\n " + W);
+	}
+	}
+	public boolean isV(String S) {
+		Pattern R=Pattern.compile("[a-zA-Z]*|[a-zA-Z]*,|[a-zA-Z]*.[^/d]");
+		Matcher G=R.matcher(S);
+		return G.matches();
+	}
+	public String toString() {
+		return Word;//tostring method
+	}
+	
+
+	
+	public void setWords(String W) {
+		Word = W;
+	}
+	
+	public String getWords() {
+		return Word;
+	}
+	
+	public boolean equals(Object next) {
+		return (next != null && getClass() == next.getClass()
+				&& Word.equals(((Word) next).Word));//if is not null,same class and char is the same return true
+	}
+	
+	public int compareTo(Word next) {
+		return Word.compareTo(next.toString());//compare the next to privous 
+	}
+	
+	
+	
+}
